@@ -1,0 +1,17 @@
+/* Hide spin buttons on webkit browsers for number input fields */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+/* Hide spin buttons on Firefox for number input fields */
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+#credit_card_logo {
+    width: 20px;
+    height: 20px;
+}
