@@ -21,17 +21,29 @@ function addYearOptions()
 function identifyCreditCard()
 {
     let userInput = document.getElementById("credit_card_number_input");
-    //console.log(userInput.value);
+    console.log(userInput.value);
     let inputString = (userInput.value).toString();
-    //console.log(inputString.length);
+    console.log(inputString.length);
     const inputAddon = document.getElementById("credit_card_logo");
     const errorLabel = document.getElementById("invalid_credit_card_label");
     errorLabel.textContent = " ";
-    switch(inputString.substring(0,1))
+
+    // Switch statement based on first digit of credit card number
+    switch(Number(inputString[0]))
     {
         // JCB card, starts with 1800 and has length 15
         case 1:
+            inputAddon.src = "../img/Diners_Club_Logo3.svg";
+            inputAddon.setAttribute("title", "Diners Club");
 
+            // If the number is too long or does not have 1800 at the front, then it is not a Diners Club card
+            if ((inputString.length > 15) || ((inputString.length == 2) && (inputString.substring(0,2) != "18"))
+                || ((inputString.length == 3) && (inputString.substring(0,3) != "180")) 
+                || ((inputString.length >= 4) && (inputString.substring(0,4) != "1800")))
+            {
+                inputAddon.src = "../img/Blue_question_mark_icon.svg";
+                inputAddon.setAttribute("title", "Unknown");
+            }
             break;
 
         /*
@@ -40,7 +52,31 @@ function identifyCreditCard()
         *   JCB card may start with 2123 and has length 15
         */ 
         case 2:
+            inputAddon.src = "../img/Mastercard_2019_logo.svg";
+            inputAddon.setAttribute("title", "Mastercard");
 
+            // If it starts with 21, then we assume it's a JCB card
+            if (inputString.substring(0,2) == "21")
+            {
+                inputAddon.src = "../img/JCB_logo.svg";
+                inputAddon.setAttribute("title", "JCB");
+
+                // If it's more than 15 digits or doesn't start with 2123, then it's not a JCB card
+                if ((inputString.length > 15)
+                     || ((inputString.length == 3) && (inputString.substring(0,3) != "212")) 
+                     || ((inputString.length == 4) && (inputString.substring(0,4) != "2123"))
+                    )
+                {
+                    inputAddon.src = "../img/Blue_question_mark_icon.svg";
+                    inputAddon.setAttribute("title", "Unknown");
+                }
+            }
+            // If it's more than 16 digits, then it's not a Mastercard
+            else if (inputString.length > 16)
+            {
+                inputAddon.src = "../img/Blue_question_mark_icon.svg";
+                inputAddon.setAttribute("title", "Unknown");
+            }
             break;
 
         /*
@@ -57,12 +93,28 @@ function identifyCreditCard()
 
         // Visa card, start with 4 and have length 13 or 16
         case 4:
+            inputAddon.src = "../img/Visa_2021.svg";
+            inputAddon.setAttribute("title", "Visa");
 
+            // If the number is too long, then it is not a Visa card
+            if (inputString.length > 16)
+            {
+                inputAddon.src = "../img/Blue_question_mark_icon.svg";
+                inputAddon.setAttribute("title", "Unknown");
+            }
             break;
 
         // Mastercard, starts with 5 and have 16 digits
         case 5:
+            inputAddon.src = "../img/Mastercard_2019_logo.svg";
+            inputAddon.setAttribute("title", "Mastercard");
 
+            // If the number is too long, then it is not a Mastercard card
+            if (inputString.length > 16)
+            {
+                inputAddon.src = "../img/Blue_question_mark_icon.svg";
+                inputAddon.setAttribute("title", "Unknown");
+            }
             break;
 
         /*
@@ -71,27 +123,18 @@ function identifyCreditCard()
         *       622126‑622925 (inclusive), 644-649 (inclusive)
         *       and have length 16
         *   UnionPay cards start with 62 and have length 16-19 (inclusive)
+        *   Arbitrarily, I will have 62 numbers show up as UnionPay cards even
+        *       though they can be Discover cards
         */
         case 6:
             
             break;
         default:
-            inputAddon.src = "../[JavaScript Version] Credit Card Number Validator/img/Blue_question_mark_icon.svg";
+            inputAddon.src = "../img/Blue_question_mark_icon.svg";
+            // Can also do: inputAddon.setAttribute("src", "../img/Blue_question_mark_icon.svg");
+            inputAddon.setAttribute("title", "Unknown");
             break;
     }
-    /*
-    if (inputString.length == 1)
-    {
-        console.log("UserInput length = " + inputString.length);
-        //input_addon.setAttribute("src", "../[JavaScript Version] Credit Card Number Validator/img/American_Express_logo_(2018).svg");
-        input_addon.src = "../[JavaScript Version] Credit Card Number Validator/img/American_Express_logo_(2018).svg";
-    }
-    else
-    {
-        //input_addon.setAttribute("src","");
-        input_addon.src = "../[JavaScript Version] Credit Card Number Validator/img/Blue_question_mark_icon.svg";
-    }
-    */
 }
 
 function passesLuhnsAlgorithm(creditCardNumber)
