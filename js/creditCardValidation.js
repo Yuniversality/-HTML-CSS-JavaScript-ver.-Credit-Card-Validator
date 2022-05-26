@@ -39,20 +39,15 @@ function identifyCreditCard()
     {
         // JCB card, starts with 1800 and has length 15
         case 1:
-            inputAddon.src = "../-HTML-CSS-JavaScript-ver.-Credit-Card-Validator/img/Diners_Club_Logo3.svg";
+            inputAddon.src = "img/Diners_Club_Logo3.svg";
             inputAddon.setAttribute("title", "Diners Club");
 
             // If the number is too long or does not have 1800 at the front, then it is not a Diners Club card
-            /*
-            if ((inputString.length > 15) || ((inputString.length == 2) && (inputString.substring(0,2) != "18"))
-                || ((inputString.length == 3) && (inputString.substring(0,3) != "180")) 
-                || ((inputString.length >= 4) && (inputString.substring(0,4) != "1800")))
-                */
             if ((inputString.length > 15) || ((inputString.length == 2) && (first2Digits != 18))
             || ((inputString.length == 3) && (first3Digits != 180)) 
             || ((inputString.length >= 4) && (first4Digits != 1800)))
             {
-                inputAddon.src = "../-HTML-CSS-JavaScript-ver.-Credit-Card-Validator/img/Blue_question_mark_icon.svg";
+                inputAddon.src = "img/Blue_question_mark_icon.svg";
                 inputAddon.setAttribute("title", "Unknown");
             }
             break;
@@ -63,36 +58,29 @@ function identifyCreditCard()
         *   JCB card may start with 2123 and has length 15
         */ 
         case 2:
-            inputAddon.src = "../-HTML-CSS-JavaScript-ver.-Credit-Card-Validator/img/Mastercard_2019_logo.svg";
+            inputAddon.src = "img/Mastercard_2019_logo.svg";
             inputAddon.setAttribute("title", "Mastercard");
 
             // If it starts with 21, then we assume it's a JCB card
-            // if (inputString.substring(0,2) == "21")
             if (first2Digits == 21)
             {
-                inputAddon.src = "../-HTML-CSS-JavaScript-ver.-Credit-Card-Validator/img/JCB_logo.svg";
+                inputAddon.src = "img/JCB_logo.svg";
                 inputAddon.setAttribute("title", "JCB");
 
                 // If it's more than 15 digits or doesn't start with 2123, then it's not a JCB card
-                /*
                 if ((inputString.length > 15)
-                     || ((inputString.length == 3) && (inputString.substring(0,3) != "212")) 
-                     || ((inputString.length == 4) && (inputString.substring(0,4) != "2123"))
-                    )
-                    */
-                    if ((inputString.length > 15)
-                    || ((inputString.length == 3) && (first3Digits != 212)) 
-                    || ((inputString.length == 4) && (first4Digits != 2123))
-                   )
+                || ((inputString.length == 3) && (first3Digits != 212)) 
+                || ((inputString.length == 4) && (first4Digits != 2123)))
                 {
-                    inputAddon.src = "../-HTML-CSS-JavaScript-ver.-Credit-Card-Validator/img/Blue_question_mark_icon.svg";
+                    inputAddon.src = "img/Blue_question_mark_icon.svg";
                     inputAddon.setAttribute("title", "Unknown");
                 }
             }
+            
             // If it's more than 16 digits, then it's not a Mastercard
             else if (inputString.length > 16)
             {
-                inputAddon.src = "../-HTML-CSS-JavaScript-ver.-Credit-Card-Validator/img/Blue_question_mark_icon.svg";
+                inputAddon.src = "img/Blue_question_mark_icon.svg";
                 inputAddon.setAttribute("title", "Unknown");
             }
             break;
@@ -106,41 +94,35 @@ function identifyCreditCard()
         *   JCB cards can also start with 3 and have length 16
         */
         case 3:
-            inputAddon.src = "../img/JCB_logo.svg";
+            inputAddon.src = "img/JCB_logo.svg";
             inputAddon.setAttribute("title", "JCB");
 
             // If it starts with a 34 or 37, then we assume it's an AMEX
-            // if ((inputString.substring(0,2) == "34") || (inputString.substring(0,2) == "37"))
             if ((first2Digits == 34) || (first2Digits == 37))
             {
-                inputAddon.src = "../img/American_Express_logo_(2018).svg";
+                inputAddon.src = "img/American_Express_logo_(2018).svg";
                 inputAddon.setAttribute("title", "AMEX");
 
                 // If it's longer than 15 digits, then it's not an AMEX
                 if (inputString.length > 15)
                 {
-                    inputAddon.src = "../img/Blue_question_mark_icon.svg";
+                    inputAddon.src = "img/Blue_question_mark_icon.svg";
                     inputAddon.setAttribute("title", "Unknown");
                 }
             }
 
             // Handle Diners Club card cases
-            /*
-            else if (((Number(inputString.substring(0,3) >= 300)) && (Number(inputString.substring(0,3) <= 305)))
-                || (Number(inputString.substring(0,3) == 309)) || (Number(inputString.substring(0,2)) == 36)
-                || (Number(inputString.substring(0,2)) == 38) || (Number(inputString.substring(0,2) == 39)))
-                */
-                else if (((first3Digits >= 300) && (first3Digits <= 305))
-                || (first3Digits == 309) || (first3Digits == 36)
-                || (first2Digits == 38) || (first2Digits == 39))
+            else if (((first3Digits >= 300) && (first3Digits <= 305))
+            || (first3Digits == 309) || (first3Digits == 36)
+            || (first2Digits == 38) || (first2Digits == 39))
             {
-                inputAddon.src = "../img/Diners_Club_Logo3.svg";
+                inputAddon.src = "img/Diners_Club_Logo3.svg";
                 inputAddon.setAttribute("title", "Diners Club");
 
                 // If it's longer than 14 digits, then it's not a Doners Club card
                 if (inputString.length > 14)
                 {
-                    inputAddon.src = "../img/Blue_question_mark_icon.svg";
+                    inputAddon.src = "img/Blue_question_mark_icon.svg";
                     inputAddon.setAttribute("title", "Unknown");
                 }
             }
@@ -148,33 +130,33 @@ function identifyCreditCard()
             // If it's more than 16 digits long, then it's not a JCB card
             else if (inputString.length > 16)
             {
-                inputAddon.src = "../img/Blue_question_mark_icon.svg";
+                inputAddon.src = "img/Blue_question_mark_icon.svg";
                 inputAddon.setAttribute("title", "Unknown");
             }
             break;
 
         // Visa card, start with 4 and have length 13 or 16
         case 4:
-            inputAddon.src = "../img/Visa_2021.svg";
+            inputAddon.src = "img/Visa_2021.svg";
             inputAddon.setAttribute("title", "Visa");
 
             // If the number is too long, then it is not a Visa card
             if (inputString.length > 16)
             {
-                inputAddon.src = "../img/Blue_question_mark_icon.svg";
+                inputAddon.src = "img/Blue_question_mark_icon.svg";
                 inputAddon.setAttribute("title", "Unknown");
             }
             break;
 
         // Mastercard, starts with 5 and have 16 digits
         case 5:
-            inputAddon.src = "../img/Mastercard_2019_logo.svg";
+            inputAddon.src = "img/Mastercard_2019_logo.svg";
             inputAddon.setAttribute("title", "Mastercard");
 
             // If the number is too long, then it is not a Mastercard card
             if (inputString.length > 16)
             {
-                inputAddon.src = "../img/Blue_question_mark_icon.svg";
+                inputAddon.src = "img/Blue_question_mark_icon.svg";
                 inputAddon.setAttribute("title", "Unknown");
             }
             break;
@@ -189,20 +171,15 @@ function identifyCreditCard()
         *       even though they can be Discover cards
         */
         case 6:
-            inputAddon.src = "../img/Blue_question_mark_icon.svg";
+            inputAddon.src = "img/Blue_question_mark_icon.svg";
             inputAddon.setAttribute("title", "Unknown");
 
             // Handle Discover card cases
-            /*
-            if (((Number(inputString.substring(0,2))) == 65)
-                || ((Number(inputString.substring(0,3)) >= 644) && (Number(inputString.substring(0,3)) <= 649))
-                || ((Number(inputString.substring(0,6)) >= 622126) && (Number(inputString.substring(0,6)) <= 622925)))
-                */
-                if ((inputString.length <= 16) && (first2Digits == 65)
-                || ((first3Digits >= 644) && (first3Digits <= 649))
-                || ((first6Digits >= 622126) && (first6Digits <= 622925)))
+            if ((inputString.length <= 16) && (first2Digits == 65)
+            || ((first3Digits >= 644) && (first3Digits <= 649))
+            || ((first6Digits >= 622126) && (first6Digits <= 622925)))
             {
-                inputAddon.src = "../img/Discover_Card_logo.svg";
+                inputAddon.src = "img/Discover_Card_logo.svg";
                 inputAddon.setAttribute("title", "Discover");
 
             }
@@ -210,17 +187,19 @@ function identifyCreditCard()
             // If it starts with 62, then it is a UnionPay card
             else if ((inputString.length <= 19) && (first2Digits == 62))
             {
-                inputAddon.src = "../img/UnionPay_logo.svg";
+                inputAddon.src = "img/UnionPay_logo.svg";
                 inputAddon.setAttribute("title", "UnionPay");
             }
             else 
             {
-                inputAddon.src = "../img/Blue_question_mark_icon.svg";
+                inputAddon.src = "img/Blue_question_mark_icon.svg";
                 inputAddon.setAttribute("title", "Unknown");
             }
             break;
+        
+        // For all the other cases
         default:
-            inputAddon.src = "../img/Blue_question_mark_icon.svg";
+            inputAddon.src = "img/Blue_question_mark_icon.svg";
             // Can also do: inputAddon.setAttribute("src", "../img/Blue_question_mark_icon.svg");
             inputAddon.setAttribute("title", "Unknown");
             break;
