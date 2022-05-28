@@ -48,12 +48,13 @@
                             <img src="img/Blue_question_mark_icon.svg" id="credit_card_logo" title="Unknown" />
                         </span>
                         <input type="number" id="credit_card_number_input" pattern="[0-9]+" inputmode="numeric" onkeyup="identifyCreditCard()"
+                        alt="Enter credit card number here" title="Enter credit card number here"
                         class="rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-900 
                         focus:ring-4 focus:ring-blue-500 focus:border-blue-500 
                         block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 
                         dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                         dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                        placeholder=" " required />
+                        placeholder=" " />
                     </div>
                     
                     <label for="credit_card_number_input" id="credit_card_label" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"> 
@@ -78,7 +79,7 @@
                         <div class="grid xl:grid-cols-2 xl:gap-6" name="expiration_date_div">
                             
                             <div class="relative z-0 w-full mb-3 group">
-                                <select name="expiration_month" id="expiration_month" 
+                                <select name="expiration_month_select" id="expiration_month_select" 
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                                 focus:ring-blue-500 focus:border-blue-500 
                                 block w-full p-2.5 
@@ -98,13 +99,13 @@
                                     <option> 11 </option>
                                     <option> 12 </option>
                                 </select>
-                                <label for="expiration_month" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                <label for="expiration_month_select" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                     Expiration Month
                                 </label>
                             </div>
         
                             <div class="relative z-0 w-full mb-3 group">
-                                <select name="expiration_year" id="expiration_year"
+                                <select name="expiration_year_select" id="expiration_year_select"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                                 focus:ring-blue-500 focus:border-blue-500 
                                 block w-full p-2.5 
@@ -114,22 +115,24 @@
                                     
                                 </select>
             
-                                <label for="expiration_year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                <label for="expiration_year_select" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                     Expiration Year
                                 </label>
                             </div>
                         </div> 
         
                         <div class="relative z-0 w-full mb-3 group">
-                            <input type="number" pattern="[0-9]{3}" name="cvv" id="cvv" 
+                            <input type="number" pattern="[0-9]{3}" name="cvv_input" id="cvv_input" 
+                            alt="Enter the 3 or 4 digit security code on the back of your card"
+                            title="Enter the 3 or 4 digit security code on the back of your card"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                             focus:ring-4 focus:ring-blue-500 focus:border-blue-500 
                             block w-full p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                            placeholder=" " required />
+                            placeholder=" " />
             
-                            <label for="cvv" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"> 
+                            <label for="cvv_input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"> 
                                 CVV 
                             </label>
                         </div>
@@ -155,28 +158,30 @@
                 <div class="basis-10/12 mb-3" id="name_center_content_div">
                     <div class="grid xl:grid-cols-2 xl:gap-6">
                         <div class="relative z-0 w-full mb-6 group">
-                            <input type="text" name="first_name" id="first_name" 
+                            <input type="text" name="first_name_input" id="first_name_input" 
+                            alt="Enter your first name" title="Enter your first name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                             focus:ring-4 focus:ring-blue-500 focus:border-blue-500 
                             block w-full p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                            placeholder=" " required />
+                            placeholder=" " />
         
-                            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"> 
+                            <label for="first_name_input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"> 
                                 First name 
                             </label>
                         </div>
                         <div class="relative z-0 w-full mb-6 group">
-                            <input type="text" name="last_name" id="last_name" 
+                            <input type="text" name="last_name_input" id="last_name_input" 
+                            alt="Enter your last name" title="Enter your last name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                             focus:ring-4 focus:ring-blue-500 focus:border-blue-500 
                             block w-full p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                            placeholder=" " required />
+                            placeholder=" " />
         
-                            <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            <label for="last_name_input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                 Last name 
                             </label>
                         </div>
@@ -195,20 +200,8 @@
                 <div class="basis-10/12 mb-3" id="address_center_content_div">
                     <div class="grid xl:grid-cols-2 xl:gap-6">
                         <div class="relative z-0 w-full mb-6 group">
-                            <input type="text" name="address" id="address" 
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-                            focus:ring-4 focus:ring-blue-500 focus:border-blue-500 
-                            block w-full p-2.5 
-                            dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-                            dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                            placeholder=" " required />
-        
-                            <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                Address
-                            </label>
-                        </div>
-                        <div class="relative z-0 w-full mb-6 group">
-                            <input type="text" name="address_extra" id="address_extra" 
+                            <input type="text" name="address_input" id="address_input" 
+                            alt="Enter your street address" title="Enter your street address"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                             focus:ring-4 focus:ring-blue-500 focus:border-blue-500 
                             block w-full p-2.5 
@@ -216,7 +209,22 @@
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                             placeholder=" " />
         
-                            <label for="address_extra" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            <label for="address_input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                Address
+                            </label>
+                        </div>
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="text" name="address_extra_input" id="address_extra_input" 
+                            alt="Enter any additional location information about your residence"
+                            title="Enter any additional location information about your residence"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                            focus:ring-4 focus:ring-blue-500 focus:border-blue-500 
+                            block w-full p-2.5 
+                            dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
+                            dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                            placeholder=" " />
+        
+                            <label for="address_extra_input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                 Apt #, Suite, Floor (Optional)
                             </label>
                         </div>
@@ -234,21 +242,23 @@
             
                 <div class="basis-10/12 mb-3" id="location_center_content_div">
                     <div class="grid xl:grid-cols-3 xl:gap-6">
-                        <div class="relative z-0 w-full mb-6 group">
-                            <input type="text" name="city" id="city" 
+                        <div class="relative z-0 w-full mb-2 group">
+                            <input type="text" name="city_input" id="city_input" 
+                            alt="Enter the name of your city" title="Enter the name of your city"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                             focus:ring-4 focus:ring-blue-500 focus:border-blue-500 
                             block w-full p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                            placeholder=" " required />
+                            placeholder=" " />
         
-                            <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            <label for="city_input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                 City
                             </label>
                         </div>
-                        <div class="relative z-0 w-full mb-6 group">
-                            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                        <div class="relative z-0 w-full mb-2 group">
+                            <select id="state_select"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                             focus:ring-blue-500 focus:border-blue-500 
                             block w-full p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
@@ -310,16 +320,17 @@
                                 State
                             </label>
                         </div>
-                        <div class="relative z-0 w-full mb-6 group">
-                            <input type="number" name="zip_code" id="zip_code" 
+                        <div class="relative z-0 w-full mb-2 group">
+                            <input type="number" name="zip_code_input" id="zip_code_input" 
+                            alt="Enter your 5 digit zip code" title="Enter your 5 digit zip code"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                             focus:ring-4 focus:ring-blue-500 focus:border-blue-500 
                             block w-full p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                            placeholder=" " required />
+                            placeholder=" " />
         
-                            <label for="zip_code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            <label for="zip_code_input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                 Zip Code
                             </label>
                         </div>
@@ -330,9 +341,26 @@
                 </div>
             </div>
 
+            <div id="input_errors_labels_div">
+                <label id="dropdowns_error_label"
+                class="block mb-2 text-sm text-center font-medium text-red-500">
+                    
+                </label>
+
+                <label id="no_input_error_label"
+                class="block mb-2 text-sm text-center font-medium text-red-500">
+                    
+                </label>
+
+                <label id="invalid_input_error_label"
+                class="block mb-2 text-sm text-center font-medium text-red-500">
+                    
+                </label>
+            </div>
+
             <div class="flex justify-center">
                 <div>
-                    <button type="button" class="text-white bg-blue-700 
+                    <button type="button" id="submit_button" class="text-white bg-blue-700 
                     hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
                     font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center 
                     dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">

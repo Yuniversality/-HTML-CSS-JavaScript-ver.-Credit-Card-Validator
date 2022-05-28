@@ -8,31 +8,31 @@ window.onload = function pageLoad() {
 function addYearOptions()
 {
     let today = new Date();  
-    const yearSelect = document.getElementById("expiration_year"); 
+    const yearSelect = document.getElementById("expiration_year_select"); 
 
     for (let i = 0; i <= 10; i++)
     {
-        let newOption = document.createElement("option");
+        const newOption = document.createElement("option");
         newOption.textContent = Number(today.getFullYear()) + i;
         yearSelect.append(newOption);
     } 
 }
 
+// Function to change the credit card logo in the credit card input field
+// based on what the user types in
 function identifyCreditCard()
 {
-    let userInput = document.getElementById("credit_card_number_input");
-    console.log(userInput.value);
-    let inputString = (userInput.value).toString();
-    console.log(inputString.length);
+    const userInput = document.getElementById("credit_card_number_input");
+    const inputString = (userInput.value).toString();
     const inputAddon = document.getElementById("credit_card_logo");
     const errorLabel = document.getElementById("invalid_credit_card_label");
-    errorLabel.textContent = " ";
+    //errorLabel.textContent = " ";
 
-    let firstDigit = Number(inputString[0]);
-    let first2Digits = Number(inputString.substring(0,2));
-    let first3Digits = Number(inputString.substring(0,3));
-    let first4Digits = Number(inputString.substring(0,4));
-    let first6Digits = Number(inputString.substring(0,6));
+    const firstDigit = Number(inputString[0]);
+    const first2Digits = Number(inputString.substring(0,2));
+    const first3Digits = Number(inputString.substring(0,3));
+    const first4Digits = Number(inputString.substring(0,4));
+    const first6Digits = Number(inputString.substring(0,6));
 
     // Switch statement based on first digit of credit card number
     switch(firstDigit)
@@ -76,7 +76,7 @@ function identifyCreditCard()
                     inputAddon.setAttribute("title", "Unknown");
                 }
             }
-            
+
             // If it's more than 16 digits, then it's not a Mastercard
             else if (inputString.length > 16)
             {
@@ -206,8 +206,176 @@ function identifyCreditCard()
     }
 }
 
-function passesLuhnsAlgorithm(creditCardNumber)
+// Event listener that triggers these functions when the "submit" button is clicked
+document.getElementById("submit_button").onclick = function() {
+    //passesLuhnsAlgorithm();
+    validateDropdownInputs();
+    validateCreditCardInput();
+    validateOtherInputs();
+};
+
+// Checks to see if the inputted credit card number is valid by seeing if it
+// passes Luhn's Algorithm
+function passesLuhnsAlgorithm()
 {
-    let runningSum = 0;
+    console.log("Entered passesLuhnsAlgorithm function");
     
+}
+
+// See if the user put in valid input for the credit card number and tells
+// them where the input is invalid
+function validateCreditCardInput()
+{
+    const userInput = document.getElementById("credit_card_number_input");
+    const inputString = (userInput.value).toString();
+    const creditCardErrorLabel = document.getElementById("invalid_credit_card_label");
+    if (inputString.length <= 0)
+    {
+        creditCardErrorLabel.textContent = "Please enter a credit card number";
+    }
+    else if (!passesLuhnsAlgorithm())
+    {
+        creditCardErrorLabel.textContent = "Invalid credit card number";
+    }
+    else
+    {
+        creditCardErrorLabel.textContent = "";
+    }
+}
+
+// See if the user put in valid input for the other input fields and tells
+// them where the input is invalid
+function validateOtherInputs()
+{
+    let emptyInputErrorDetected = 0;
+    let invalidInputErrorDetected = 0;
+    let noInputErrorText = "Please enter something for: ";
+    let invalidInputErrorText = "Please enter valid input for: ";
+    
+    // Test if CVV field is empty or invalid
+    const cvvInput = document.getElementById("cvv_input");
+    const cvvInputText = cvvInput.value;
+    if (cvvInputText.length <= 0)
+    {
+        noInputErrorText += "CVV ";
+        emptyInputErrorDetected++;
+    }
+    else if (cvvInputText.length > 4)
+    {
+        invalidInputErrorText += "CVV ";
+        invalidInputErrorDetected++;
+    }
+    
+    // Test if the First Name field is empty
+    const firstNameInput = document.getElementById("first_name_input");
+    const firstNameInputText = firstNameInput.value;
+    if (firstNameInputText.length <= 0)
+    {
+        noInputErrorText += "First Name ";
+        emptyInputErrorDetected++;
+    }
+
+    // Test if the Last Name field is empty
+    const lastNameInput = document.getElementById("last_name_input");
+    const lastNameInputText = lastNameInput.value;
+    if (lastNameInputText.length <= 0)
+    {
+        noInputErrorText += "Last Name ";
+        emptyInputErrorDetected++;
+    }
+
+    // Test if the Address field is empty
+    const addressInput = document.getElementById("address_input");
+    const addressInputText = addressInput.value;
+    if (addressInputText.length <= 0)
+    {
+        noInputErrorText += "Address ";
+        emptyInputErrorDetected++;
+    }
+
+    // Test if the City field is empty
+    const cityInput = document.getElementById("city_input");
+    const cityInputText = cityInput.value;
+    if (cityInputText.length <= 0)
+    {
+        noInputErrorText += "City ";
+        emptyInputErrorDetected++;
+    }
+
+    // Test if the Zip Code field is empty or valid
+    const zipCodeInput = document.getElementById("zip_code_input");
+    const zipCodeInputText = zipCodeInput.value;
+    if (zipCodeInputText.length <= 0)
+    {
+        noInputErrorText += "Zip Code ";
+        emptyInputErrorDetected++;
+    }
+    else if (zipCodeInputText.length > 5)
+    {
+        invalidInputErrorText += "Zip Code ";
+        invalidInputErrorDetected++;
+    }
+
+    // Display empty input errors
+    const noInputErrorLabel = document.getElementById("no_input_error_label");
+    if (emptyInputErrorDetected)
+    {
+        noInputErrorLabel.textContent = noInputErrorText;
+    }
+    else
+    {
+        noInputErrorLabel.textContent = "";
+    }
+
+    // Display invalid input errors
+    const invalidInputErrorLabel = document.getElementById("invalid_input_error_label");
+    if (invalidInputErrorDetected)
+    {
+        invalidInputErrorLabel.textContent = invalidInputErrorText;
+    }
+    else 
+    {
+        invalidInputErrorLabel.textContent = "";
+    }
+}
+
+// See if the user actually made a choice for the dropdown inputs and 
+// if not, then tell them to
+function validateDropdownInputs()
+{
+    let errorText = "Please make a choice for: ";
+    let errorDetected = 0;
+    const monthSelect = document.getElementById("expiration_month_select");
+    const monthSelectText = monthSelect.options[monthSelect.selectedIndex].text;
+    if (monthSelectText == "Month")
+    {
+        errorText += "Month ";
+        errorDetected++;
+    }
+
+    const yearSelect = document.getElementById("expiration_year_select");
+    const yearSelectText = yearSelect.options[yearSelect.selectedIndex].text;
+    if (yearSelectText == "Year")
+    {
+        errorText += "Year ";
+        errorDetected++;
+    }
+    
+    const stateSelect = document.getElementById("state_select");
+    const stateSelectText = stateSelect.options[stateSelect.selectedIndex].text;
+    if (stateSelectText == "Choose State")
+    {
+        errorText += "State ";
+        errorDetected++;
+    }
+
+    const dropdownsErrorLabel = document.getElementById("dropdowns_error_label");
+    if (errorDetected)
+    {
+        dropdownsErrorLabel.textContent = errorText;
+    }
+    else
+    {
+        dropdownsErrorLabel.textContent = "";
+    }
 }
