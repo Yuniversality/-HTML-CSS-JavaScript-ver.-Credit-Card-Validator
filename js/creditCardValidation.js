@@ -175,9 +175,10 @@ function identifyCreditCard()
             inputAddon.setAttribute("title", "Unknown");
 
             // Handle Discover card cases
-            if ((inputString.length <= 16) && (first2Digits == 65)
-            || ((first3Digits >= 644) && (first3Digits <= 649))
-            || ((first6Digits >= 622126) && (first6Digits <= 622925)))
+            if ((inputString.length <= 16) 
+            && ((first2Digits == 65) || (first4Digits == 6011)
+            || ((first3Digits >= 644) && (first3Digits <= 649)) 
+            || ((first6Digits >= 622126) && (first6Digits <= 622925))))
             {
                 inputAddon.src = "img/Discover_Card_logo.svg";
                 inputAddon.setAttribute("title", "Discover");
@@ -218,8 +219,50 @@ document.getElementById("submit_button").onclick = function() {
 // passes Luhn's Algorithm
 function passesLuhnsAlgorithm()
 {
-    console.log("Entered passesLuhnsAlgorithm function");
+    /* 
+	*   For keeping track of every other digit to double.
+	*   Since the for loop starts at the last credit card digit, we
+	*   set position = 1 so every even number is a number we need to 
+	*   do the double procedure on while the odd numbers we just add.
+	*/
+    let position = 1;
+    var sum = 0;
     
+    const creditCardNumber = document.getElementById("credit_card_number_input");
+    const creditCardNumberInput = creditCardNumber.value;
+    for (let i = (creditCardNumberInput.length - 1); i >= 0; i--)
+	{
+		// For even positions
+		if ((position % 2) == 0)
+		{
+			// If the digit is at an even position, double it
+			let digitNum = Number(creditCardNumberInput[i]) * 2;
+			// If the product is >=10, then we add the digits of the 
+			// product together then add them to the sum
+			if (digitNum >= 10)
+			{
+				let digit1 = Math.floor(digitNum / 10);
+				let digit2 = digitNum % 10;
+				sum = sum + digit1 + digit2;
+			}
+            // If the product is <10, then add it normally
+			else
+			{
+				sum = sum + digitNum;
+			}
+		}
+		// For odd positions
+        // Add the digit to the sum normally
+		else
+		{
+			sum = sum + Number(creditCardNumberInput[i]);
+		}
+		position++;
+	}
+
+	// If the mod = 0, then we return true, else false
+    // Need to round first because sometimes the sum is a float, not an int
+    return !(Math.floor(sum) % 10);
 }
 
 // See if the user put in valid input for the credit card number and tells
