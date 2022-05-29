@@ -353,7 +353,7 @@ function validateOtherInputs()
         noInputErrorText += "Zip Code ";
         emptyInputErrorDetected++;
     }
-    else if (zipCodeInputText.length > 5)
+    else if (zipCodeInputText.length != 5)
     {
         invalidInputErrorText += "Zip Code ";
         invalidInputErrorDetected++;
