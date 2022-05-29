@@ -48,5 +48,5 @@ This site was made using Tailwind CSS, find out more about it here:
 > Mastercard SVG: [https://en.wikipedia.org/wiki/Mastercard#/media/File:Mastercard_2019_logo.svg](https://en.wikipedia.org/wiki/Mastercard#/media/File:Mastercard_2019_logo.svg)  
 >American Express SVG: [https://en.wikipedia.org/wiki/American_Express#/media/File:American_Express_logo_(2018).svg](https://en.wikipedia.org/wiki/American_Express#/media/File:American_Express_logo_(2018).svg)  
 > Diner’s Club SVG: [https://en.wikipedia.org/wiki/Diners_Club_International#/media/File:Diners_Club_Logo3.svg](https://en.wikipedia.org/wiki/Diners_Club_International#/media/File:Diners_Club_Logo3.svg)  
-> JCB SVG: [https://en.wikipedia.org/wiki/JCB_Co.,_Ltd.#/media/File:JCB_logo.svg](https://en.wikipedia.org/wiki/JCB_Co.,_Ltd.#/media/File:JCB_logo.svg)
+> JCB SVG: [https://en.wikipedia.org/wiki/JCB_Co.,_Ltd.#/media/File:JCB_logo.svg](https://en.wikipedia.org/wiki/JCB_Co.,_Ltd.#/media/File:JCB_logo.svg)  
 > UnionPay SVG: [https://en.wikipedia.org/wiki/UnionPay#/media/File:UnionPay_logo.svg](https://en.wikipedia.org/wiki/UnionPay#/media/File:UnionPay_logo.svg)  
