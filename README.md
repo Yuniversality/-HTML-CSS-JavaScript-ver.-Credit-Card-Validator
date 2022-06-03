@@ -3,6 +3,8 @@ By Ethan Yu
 
 ## Link to site: https://yuniversality.github.io/-HTML-CSS-JavaScript-ver.-Credit-Card-Validator/  
 
+### Link to C++ version: https://github.com/Yuniversality/-C-ver.-Credit-Card-Validator
+
 ## What is it?  
 This site emulates an online checkout page where you have to input credit card and billing information.  
 
