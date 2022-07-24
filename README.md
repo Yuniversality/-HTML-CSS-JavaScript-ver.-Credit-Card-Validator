@@ -9,7 +9,7 @@ By Ethan Yu
 This site emulates an online checkout page where you have to input credit card and billing information.  
 
 **Note**: The page is set up so it does not submit any information upon hitting the *Submit* button, so I am not collecting your information. That being said, I am not responsible for any data you input getting collected by some other entity because this site is not secure.  
-This site was meant as UI/UX practice, not as a site with good security.  
+This site was meant as UI/UX practice, not as a site with good security. Site components were made with Tailwind CSS.  
 
 ## How to Use  
 Open the site using the link above and fill out all the input fields. For the credit card field, as you type in the credit card number, the field will try to identify the brand of the card. Currently, the following companies are supported: __Visa, Mastercard, American Express (AMEX),
